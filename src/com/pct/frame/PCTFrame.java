@@ -10,7 +10,6 @@ import java.net.URI;
 public class PCTFrame extends JFrame {
 
     private final JPanel imagePreviewPane = new JPanel();
-    private final JPanel imageListPane = new JPanel();
     private final JPanel userControlPane = new JPanel();
     private final JPanel controlsBox = new JPanel();
     private final JPanel movePanel = new JPanel();
@@ -41,6 +40,7 @@ public class PCTFrame extends JFrame {
     private final JRadioButton dimensionalRadioButton = new JRadioButton(Const.DIMENSIONAL_RADIO_TEXT);
     private final ButtonGroup conversionModeGroup = new ButtonGroup();
     public final JList<String> imageFileList = new JList<>();
+    private final JScrollPane imageListPane = new JScrollPane(imageFileList);
 
     private final Point screenCenter = new Point();
 
@@ -119,7 +119,7 @@ public class PCTFrame extends JFrame {
         this.infoBox.add(aboutButton, BorderLayout.NORTH);
         this.infoBox.add(imprintButton, BorderLayout.SOUTH);
 
-        this.getImageListPane().add(imageFileList, BorderLayout.CENTER);
+        //this.getImageListPane().add(imageFileList, BorderLayout.CENTER);
 
         this.getUserControlPane().add(controlsBox, BorderLayout.LINE_START);
         this.getUserControlPane().add(userParameterInputBox, BorderLayout.CENTER);
@@ -137,7 +137,7 @@ public class PCTFrame extends JFrame {
                 (int) (this.getHeight()*Const.PREFERRED_LIST_HEIGHT_FACTOR)
         ));
 
-        this.getImageListPane().setLayout(new BorderLayout());
+        //this.getImageListPane().setLayout(new BorderLayout());
 
         this.getImagePreviewPane().setBackground(Color.BLACK);
         this.getImagePreviewPane().setPreferredSize(new Dimension(
@@ -242,6 +242,7 @@ public class PCTFrame extends JFrame {
         this.aboutButton.setToolTipText(ToolTipTexts.aboutButtonToolTip);
         this.aboutButton.addActionListener(e -> {
             JDialog aboutDialog = new JDialog();
+
             aboutDialog.setTitle(Const.ABOUT_TITLE);
             aboutDialog.setSize(Const.DIALOG_WIDTH, Const.DIALOG_HEIGHT);
             aboutDialog.setLocationRelativeTo(this);
@@ -285,7 +286,7 @@ public class PCTFrame extends JFrame {
         return this.imagePreviewPane;
     }
 
-    public JPanel getImageListPane() {
+    public JScrollPane getImageListPane() {
         return this.imageListPane;
     }
 

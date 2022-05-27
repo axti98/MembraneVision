@@ -14,19 +14,19 @@ import java.util.Collection;
 
 public class AddImageListener implements ActionListener {
 
-    private DefaultListModel<String> model;
-    private FileFilter ff = new FileNameExtensionFilter("Image files",
-            Const.EXT_TIF,
-            Const.EXT_TIFF,
-            Const.EXT_JPG,
-            Const.EXT_PNG
-    );
-    private JFileChooser fileChooser;
+    private final DefaultListModel<String> model;
+    private final JFileChooser fileChooser;
     public AddImageListener(ListModel<String> AModel){
         this.model = (DefaultListModel<String>) AModel;
         fileChooser = new JFileChooser();
         fileChooser.setDialogTitle(Const.FILE_CHOOSER_TITLE);
         fileChooser.setMultiSelectionEnabled(true);
+        FileFilter ff = new FileNameExtensionFilter("Image files",
+                Const.EXT_TIF,
+                Const.EXT_TIFF,
+                Const.EXT_JPG,
+                Const.EXT_PNG
+        );
         fileChooser.setFileFilter(ff);
     }
 

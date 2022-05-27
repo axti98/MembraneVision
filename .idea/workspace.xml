@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ecf6168a-a1f1-434f-8436-6d949b9e206c" name="Changes" comment="Refactoring to enable use of frame components in listeners.">
-      <change afterPath="$PROJECT_DIR$/src/com/pct/Essentials.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/ToolTipTexts.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/AddImageListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/ImageDownListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/ImageUpListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/RemoveImageListener.java" afterDir="false" />
+    <list default="true" id="ecf6168a-a1f1-434f-8436-6d949b9e206c" name="Changes" comment="Enables functionalities of Up, Down, Add and Remove Buttons. Tif(f), PNG and JPG images can be added and there path is shown in the list. Up and Down moves there position.&#10;&#10;Also some refactoring.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pct/frame/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/frame/Const.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pct/frame/PCTFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/frame/PCTFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pct/frame/listeners/AddImageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/AddImageListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pct/frame/listeners/RemoveImageListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/RemoveImageListener.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +28,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="298Lb4zOpZPqeUvajDrnhREYXLE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -78,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653665385869</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Enables functionalities of Up, Down, Add and Remove Buttons. Tif(f), PNG and JPG images can be added and there path is shown in the list. Up and Down moves there position.&#10;&#10;Also some refactoring.">
+      <created>1653681161503</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1653681161503</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -94,6 +99,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Refactoring to enable use of frame components in listeners." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactoring to enable use of frame components in listeners." />
+    <MESSAGE value="Enables functionalities of Up, Down, Add and Remove Buttons. Tif(f), PNG and JPG images can be added and there path is shown in the list. Up and Down moves there position.&#10;&#10;Also some refactoring." />
+    <option name="LAST_COMMIT_MESSAGE" value="Enables functionalities of Up, Down, Add and Remove Buttons. Tif(f), PNG and JPG images can be added and there path is shown in the list. Up and Down moves there position.&#10;&#10;Also some refactoring." />
   </component>
 </project>

@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 
 public class RemoveImageListener implements ActionListener {
 
-    private JList<String> workingList;
+    private final JList<String> workingList;
 
     public RemoveImageListener(JList<String> AList){
         this.workingList = AList;

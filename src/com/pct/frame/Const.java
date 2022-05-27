@@ -49,7 +49,7 @@ public abstract class Const {
 
     public static final Dimension TEXTFIELD_DEFAULT_DIMENSION = new Dimension(100,25);
     public static final Dimension LABEL_DEFAULT_DIMENSION = new Dimension(135,25);
-    public static final float PREFERRED_INPUT_HEIGHT_FACTOR = PREFERRED_LIST_WIDTH_FACTOR;
+    public static final float PREFERRED_INPUT_HEIGHT_FACTOR = 0.15f;
 
     public static final int INFO_MARGIN_LEFT = 0;
     public static final int INFO_MARGIN_TOP = 15;
@@ -71,7 +71,7 @@ public abstract class Const {
     // INFORMATIONS
 
     public static final String IMPRINT_URL = "https://www.uni-muenster.de/Physik.TP/research/wittkowski/";
-    // Todo: About Text ausformulieren
+    // Todo: Write better about text
     public static final String ABOUT_TEXT = "This application was developed by Alexander Tiekötter of \n"
                                            +"the Institute of Theoretical Phyics at the University of Münster.";
 
