@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ecf6168a-a1f1-434f-8436-6d949b9e206c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ecf6168a-a1f1-434f-8436-6d949b9e206c" name="Changes" comment="Refactoring to enable use of frame components in listeners.">
+      <change afterPath="$PROJECT_DIR$/src/com/pct/Essentials.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/ToolTipTexts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/AddImageListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/ImageDownListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/ImageUpListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/pct/frame/listeners/RemoveImageListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/pct/frame/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/frame/Const.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pct/frame/PCTFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/frame/PCTFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,8 +49,8 @@
   }
 }</component>
   <component name="RunManager">
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main" />
+    <configuration name="com.pct.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.pct.Main" />
       <module name="ParameterConverterTool" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -51,7 +58,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main" />
+        <item itemvalue="Application.com.pct.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -64,6 +71,14 @@
       <option name="presentableId" value="Default" />
       <updated>1652489835840</updated>
     </task>
+    <task id="LOCAL-00001" summary="Refactoring to enable use of frame components in listeners.">
+      <created>1653665385869</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1653665385869</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -76,5 +91,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Refactoring to enable use of frame components in listeners." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring to enable use of frame components in listeners." />
   </component>
 </project>

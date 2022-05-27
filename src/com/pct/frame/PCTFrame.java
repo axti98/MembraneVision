@@ -1,11 +1,14 @@
 package com.pct.frame;
 
+import com.pct.frame.listeners.*;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
 
 public class PCTFrame extends JFrame {
+
     private final JPanel imagePreviewPane = new JPanel();
     private final JPanel imageListPane = new JPanel();
     private final JPanel userControlPane = new JPanel();
@@ -23,6 +26,7 @@ public class PCTFrame extends JFrame {
     private final JLabel distanceLabel = new JLabel(Const.DISTANCE_LABEL);
     private final JLabel expansionDegreeLabel = new JLabel(Const.EXPANSION_DEGREE_LABEL);
     private final JLabel conversionModeLabel = new JLabel(Const.CONVERSION_MODE_LABEL);
+
     private final JButton imgUpButton = new JButton(Const.UP_TEXT);
     private final JButton imgDownButton = new JButton(Const.DOWN_TEXT);
     private final JButton imgAddButton = new JButton(Const.ADD_TEXT);
@@ -77,14 +81,56 @@ public class PCTFrame extends JFrame {
     }
 
     private void addComponents() {
+        this.movePanel.add(imgUpButton, BorderLayout.PAGE_START);
+        this.movePanel.add(imgDownButton, BorderLayout.PAGE_END);
+
+        this.addPanel.add(imgAddButton, BorderLayout.PAGE_START);
+        this.addPanel.add(imgRemoveButton, BorderLayout.PAGE_END);
+
+        this.expansionDegreePanel.add(expansionDegreeLabel);
+        this.expansionDegreePanel.add(expansionDegreeText);
+        this.distancePanel.add(distanceLabel, BorderLayout.PAGE_END);
+        this.distancePanel.add(distanceText);
+
+        this.controlsBox.add(movePanel, BorderLayout.LINE_START);
+        this.controlsBox.add(addPanel, BorderLayout.LINE_END);
+
+        this.buttonPane.add(expansionDegreePanel, BorderLayout.PAGE_START);
+        this.buttonPane.add(distancePanel, BorderLayout.PAGE_END);
+
+        this.conversionPane.add(listRadioButton, BorderLayout.PAGE_START);
+        this.conversionPane.add(dimensionalRadioButton, BorderLayout.PAGE_START);
+
+        this.conversionModeGroup.add(dimensionalRadioButton);
+        this.conversionModeGroup.add(listRadioButton);
+
+        this.radioButtons.add(conversionModeLabel);
+        this.radioButtons.add(listRadioButton);
+        this.radioButtons.add(dimensionalRadioButton);
+        this.conversionPane.add(radioButtons, BorderLayout.PAGE_START);
+
+        this.buttons.add(changeZOrder);
+        this.buttons.add(convertButton);
+        this.conversionPane.add(buttons, BorderLayout.PAGE_END);
+
+        this.userParameterInputBox.add(buttonPane, BorderLayout.LINE_START);
+        this.userParameterInputBox.add(conversionPane, BorderLayout.CENTER);
+
+        this.infoBox.add(aboutButton, BorderLayout.NORTH);
+        this.infoBox.add(imprintButton, BorderLayout.SOUTH);
+
+        this.getImageListPane().add(imageFileList, BorderLayout.CENTER);
+
+        this.getUserControlPane().add(controlsBox, BorderLayout.LINE_START);
+        this.getUserControlPane().add(userParameterInputBox, BorderLayout.CENTER);
+        this.getUserControlPane().add(infoBox, BorderLayout.LINE_END);
+
         this.add(this.getImageListPane(),    BorderLayout.LINE_START);
         this.add(this.getImagePreviewPane(), BorderLayout.CENTER);
         this.add(this.getUserControlPane(),  BorderLayout.PAGE_END);
     }
 
     private void setupComponents(){
-        //------------------------------------------------------------------------------------------------------
-        // IMAGE LIST SECTION
         // TODO: Set design of list view
         this.getImageListPane().setPreferredSize(new Dimension(
                 (int) (this.getWidth()*Const.PREFERRED_LIST_WIDTH_FACTOR),
@@ -93,118 +139,108 @@ public class PCTFrame extends JFrame {
 
         this.getImageListPane().setLayout(new BorderLayout());
 
-        this.getImageListPane().add(imageFileList, BorderLayout.CENTER);
-        //------------------------------------------------------------------------------------------------------
-
-        //------------------------------------------------------------------------------------------------------
-        // IMAGE PREVIEW SECTION
+        this.getImagePreviewPane().setBackground(Color.BLACK);
         this.getImagePreviewPane().setPreferredSize(new Dimension(
                 (int) (this.getWidth()*Const.PREFERRED_SIZE_FACTOR),
                 (int) (this.getHeight()*Const.PREFERRED_SIZE_FACTOR)
         ));
 
-        this.getImagePreviewPane().setBackground(Color.BLACK);
-        //------------------------------------------------------------------------------------------------------
-
-        //------------------------------------------------------------------------------------------------------
-        // CONTROLS BOX SECTION
         this.getUserControlPane().setPreferredSize(new Dimension(
                 this.getWidth(),
                 (int) (this.getHeight()*Const.PREFERRED_INPUT_HEIGHT_FACTOR)
         ));
 
-        this.getUserControlPane().setBackground(Color.MAGENTA);
-
         this.getUserControlPane().setLayout(new BorderLayout());
 
-        controlsBox.setPreferredSize(new Dimension(
+        this.imageFileList.setModel(new DefaultListModel<>());
+        this.imageFileList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        this.imgUpButton.setToolTipText(ToolTipTexts.upButtonToolTip);
+        this.imgUpButton.addActionListener(new ImageUpListener(this.getImageFileList()));
+        this.imgUpButton.setEnabled(false);
+
+        this.imgDownButton.setToolTipText(ToolTipTexts.downButtonToolTip);
+        this.imgDownButton.addActionListener(new ImageDownListener(this.getImageFileList()));
+        this.imgDownButton.setEnabled(false);
+
+        this.controlsBox.setPreferredSize(new Dimension(
                 (int) this.getImageListPane().getPreferredSize().getWidth(),
                 (int) this.getUserControlPane().getPreferredSize().getHeight()
         ));
-        controlsBox.setLayout(new BorderLayout());
+        this.controlsBox.setLayout(new BorderLayout());
 
-        movePanel.setLayout(new BorderLayout());
-        movePanel.setBorder(BorderFactory.createEmptyBorder(
+        this.movePanel.setLayout(new BorderLayout());
+        this.movePanel.setBorder(BorderFactory.createEmptyBorder(
                 Const.MOVE_MARGIN_TOP,
                 Const.MOVE_MARGIN_LEFT,
                 Const.MOVE_MARGIN_BOT,
                 Const.MOVE_MARGIN_RIGHT
         ));
-        movePanel.add(imgUpButton, BorderLayout.PAGE_START);
-        movePanel.add(imgDownButton, BorderLayout.PAGE_END);
-        controlsBox.add(movePanel, BorderLayout.LINE_START);
 
-        imgAddButton.addActionListener(new AddImageListener());
-        imgRemoveButton.addActionListener(new RemoveImageListener());
+        this.imgAddButton.addActionListener(new AddImageListener(this.getImageFileList().getModel()));
+        this.imgAddButton.setToolTipText(ToolTipTexts.addButtonToolTip);
 
-        addPanel.setLayout(new BorderLayout());
-        addPanel.setBorder(BorderFactory.createEmptyBorder(
+        this.imgRemoveButton.addActionListener(new RemoveImageListener(this.getImageFileList()));
+        this.imgRemoveButton.setToolTipText(ToolTipTexts.removeButtonToolTip);
+
+        this.addPanel.setLayout(new BorderLayout());
+        this.addPanel.setBorder(BorderFactory.createEmptyBorder(
                 Const.ADD_MARGIN_TOP,
                 Const.ADD_MARGIN_LEFT,
                 Const.ADD_MARGIN_BOT,
                 Const.ADD_MARGIN_RIGHT
         ));
-        addPanel.add(imgAddButton, BorderLayout.PAGE_START);
-        addPanel.add(imgRemoveButton, BorderLayout.PAGE_END);
-        controlsBox.add(addPanel, BorderLayout.LINE_END);
 
-        userParameterInputBox.setLayout(new BorderLayout());
+        this.userParameterInputBox.setLayout(new BorderLayout());
 
-        expansionDegreeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-        expansionDegreeLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
-        expansionDegreePanel.add(expansionDegreeLabel);
+        this.expansionDegreeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+        this.expansionDegreeLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
 
-        expansionDegreeText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
-        expansionDegreePanel.add(expansionDegreeText);
+        this.expansionDegreeText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
+        this.expansionDegreeText.setToolTipText(ToolTipTexts.expansionDegreeTextToolTip);
 
-        distanceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-        distanceLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
-        distancePanel.add(distanceLabel, BorderLayout.PAGE_END);
+        this.distanceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+        this.distanceLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
 
-        distanceText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
-        distancePanel.add(distanceText);
+        this.distanceText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
+        this.distanceText.setToolTipText(ToolTipTexts.distanceTextToolTip);
 
-        buttonPane.setLayout(new BorderLayout());
-        buttonPane.setBorder(BorderFactory.createEmptyBorder(
+        this.changeZOrder.setToolTipText(ToolTipTexts.changeZOrderButtonToolTip);
+
+        this.convertButton.setToolTipText(ToolTipTexts.convertButtonToolTip);
+
+        // CHANGE TO TRUE WHEN 3D WILL BE AVAILABLE
+        this.distanceText.setEnabled(false);
+        this.changeZOrder.setEnabled(false);
+        this.dimensionalRadioButton.setEnabled(false);
+        // ----------------------------------------
+
+        this.buttonPane.setLayout(new BorderLayout());
+        this.buttonPane.setBorder(BorderFactory.createEmptyBorder(
                 Const.INFO_MARGIN_TOP,
                 Const.INFO_MARGIN_LEFT,
                 Const.INFO_MARGIN_BOT,
                 Const.INFO_MARGIN_RIGHT
         ));
-        buttonPane.add(expansionDegreePanel, BorderLayout.PAGE_START);
-        buttonPane.add(distancePanel, BorderLayout.PAGE_END);
 
-        conversionPane.setLayout(new BorderLayout());
-        conversionPane.setBorder(BorderFactory.createEmptyBorder(
+        this.conversionPane.setLayout(new BorderLayout());
+        this.conversionPane.setBorder(BorderFactory.createEmptyBorder(
                 Const.INFO_MARGIN_TOP,
                 Const.INFO_MARGIN_LEFT,
                 Const.INFO_MARGIN_BOT,
                 Const.INFO_MARGIN_RIGHT
         ));
 
-        conversionModeLabel.setHorizontalAlignment(SwingUtilities.RIGHT);
-        conversionModeLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
+        this.conversionModeLabel.setHorizontalAlignment(SwingUtilities.RIGHT);
+        this.conversionModeLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
 
-        listRadioButton.setSelected(true);
-        conversionPane.add(listRadioButton, BorderLayout.PAGE_START);
-        conversionPane.add(dimensionalRadioButton, BorderLayout.PAGE_START);
+        this.dimensionalRadioButton.setToolTipText(ToolTipTexts.single3DRadioToolTip);
 
-        conversionModeGroup.add(dimensionalRadioButton);
-        conversionModeGroup.add(listRadioButton);
+        this.listRadioButton.setSelected(true);
+        this.listRadioButton.setToolTipText(ToolTipTexts.list2DRadioToolTip);
 
-        radioButtons.add(conversionModeLabel);
-        radioButtons.add(listRadioButton);
-        radioButtons.add(dimensionalRadioButton);
-        conversionPane.add(radioButtons, BorderLayout.PAGE_START);
-
-        buttons.add(changeZOrder);
-        buttons.add(convertButton);
-        conversionPane.add(buttons, BorderLayout.PAGE_END);
-
-        userParameterInputBox.add(buttonPane, BorderLayout.LINE_START);
-        userParameterInputBox.add(conversionPane, BorderLayout.CENTER);
-
-        aboutButton.addActionListener(e -> {
+        this.aboutButton.setToolTipText(ToolTipTexts.aboutButtonToolTip);
+        this.aboutButton.addActionListener(e -> {
             JDialog aboutDialog = new JDialog();
             aboutDialog.setTitle(Const.ABOUT_TITLE);
             aboutDialog.setSize(Const.DIALOG_WIDTH, Const.DIALOG_HEIGHT);
@@ -214,31 +250,22 @@ public class PCTFrame extends JFrame {
             aboutDialog.setVisible(true);
         });
 
-        imprintButton.addActionListener(e -> {
-            JDialog imprintDialog = new JDialog();
-            imprintDialog.setTitle(Const.IMPRINT_TITLE);
-            imprintDialog.setSize(Const.DIALOG_WIDTH, Const.DIALOG_HEIGHT);
-            imprintDialog.setLocationRelativeTo(this);
-            imprintDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            imprintDialog.setResizable(false);
-            imprintDialog.setVisible(true);
+        this.imprintButton.setToolTipText(ToolTipTexts.imprintButtonToolTip);
+        this.imprintButton.addActionListener(e -> {
+            try {
+                Desktop.getDesktop().browse(URI.create(Const.IMPRINT_URL));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         });
 
-        infoBox.setLayout(new BorderLayout(Const.INFO_HGAP, Const.INFO_VGAP));
-        infoBox.setBorder(BorderFactory.createEmptyBorder(
+        this.infoBox.setLayout(new BorderLayout(Const.INFO_HGAP, Const.INFO_VGAP));
+        this.infoBox.setBorder(BorderFactory.createEmptyBorder(
                 Const.INFO_MARGIN_TOP,
                 Const.INFO_MARGIN_LEFT,
                 Const.INFO_MARGIN_BOT,
                 Const.INFO_MARGIN_RIGHT
         ));
-
-        infoBox.add(aboutButton, BorderLayout.NORTH);
-        infoBox.add(imprintButton, BorderLayout.SOUTH);
-
-        this.getUserControlPane().add(controlsBox, BorderLayout.LINE_START);
-        this.getUserControlPane().add(userParameterInputBox, BorderLayout.CENTER);
-        this.getUserControlPane().add(infoBox, BorderLayout.LINE_END);
-        //------------------------------------------------------------------------------------------------------
     }
 
     private Point getScreenCenter() {
@@ -255,30 +282,24 @@ public class PCTFrame extends JFrame {
     }
 
     public JPanel getImagePreviewPane() {
-        return imagePreviewPane;
+        return this.imagePreviewPane;
     }
 
     public JPanel getImageListPane() {
-        return imageListPane;
+        return this.imageListPane;
     }
 
     public JPanel getUserControlPane() {
-        return userControlPane;
+        return this.userControlPane;
     }
 
-    private class AddImageListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e) {
+    public JList<String> getImageFileList(){return this.imageFileList;}
 
-        }
+    public JButton getImgUpButton() {
+        return imgUpButton;
     }
 
-    private class RemoveImageListener implements ActionListener
-    {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-        }
+    public JButton getImgDownButton() {
+        return imgDownButton;
     }
 }

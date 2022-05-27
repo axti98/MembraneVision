@@ -4,6 +4,8 @@ import java.awt.*;
 
 public abstract class Const {
 
+    public static final String FILE_CHOOSER_TITLE = "Choose a file...";
+
     private Const(){}
 
     // FRAME CONSTANTS
@@ -65,4 +67,20 @@ public abstract class Const {
     public static final int ADD_MARGIN_TOP = 20;
     public static final int ADD_MARGIN_BOT = 20;
     public static final int ADD_MARGIN_RIGHT = 5;
+
+    // INFORMATIONS
+
+    public static final String IMPRINT_URL = "https://www.uni-muenster.de/Physik.TP/research/wittkowski/";
+    // Todo: About Text ausformulieren
+    public static final String ABOUT_TEXT = "This application was developed by Alexander Tiekötter of \n"
+                                           +"the Institute of Theoretical Phyics at the University of Münster.";
+
+    public static final int NO_INDEX_SELECTED = -1;
+
+    // FILE EXTENSIONS
+    public static final String EXT_TIF = "tif";
+    public static final String EXT_TIFF = "tiff";
+    public static final String EXT_JPG = "jpg";
+    public static final String EXT_PNG = "PNG";
+    public static final String EXT_RSE = "rose";
 }
