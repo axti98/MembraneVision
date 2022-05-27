@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class ImageDownListener implements ActionListener {
 
-    private JList<String> workingList;
+    private final JList<String> workingList;
 
     public ImageDownListener(JList<String> AList){
         this.workingList = AList;

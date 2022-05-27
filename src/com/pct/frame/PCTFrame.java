@@ -1,9 +1,15 @@
 package com.pct.frame;
 
-import com.pct.frame.listeners.*;
+import com.pct.Essentials;
+import com.pct.frame.listeners.AddImageListener;
+import com.pct.frame.listeners.ImageDownListener;
+import com.pct.frame.listeners.ImageUpListener;
+import com.pct.frame.listeners.RemoveImageListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.io.IOException;
 import java.net.URI;
 
@@ -25,7 +31,7 @@ public class PCTFrame extends JFrame {
     private final JLabel distanceLabel = new JLabel(Const.DISTANCE_LABEL);
     private final JLabel expansionDegreeLabel = new JLabel(Const.EXPANSION_DEGREE_LABEL);
     private final JLabel conversionModeLabel = new JLabel(Const.CONVERSION_MODE_LABEL);
-
+    private final JLabel imagePreviewLabel = new JLabel();
     private final JButton imgUpButton = new JButton(Const.UP_TEXT);
     private final JButton imgDownButton = new JButton(Const.DOWN_TEXT);
     private final JButton imgAddButton = new JButton(Const.ADD_TEXT);
@@ -49,14 +55,25 @@ public class PCTFrame extends JFrame {
         this.initUI();
     }
 
-    // TODO: Adding Tooltips
-
     private void initUI()
     {
         this.setTitle(Const.FRAME_TITLE);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setSize(Const.DEFAULT_FRAME_WIDTH, Const.DEFAULT_FRAME_HEIGHT);
         this.setResizable(true);
+        this.addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                super.componentResized(e);
+                if(!imageFileList.isSelectionEmpty()) {
+                    imagePreviewLabel.setIcon(Essentials.createCroppedImage(
+                            imageFileList.getSelectedValue(),
+                            imagePreviewLabel.getWidth(),
+                            imagePreviewLabel.getHeight())
+                    );
+                }
+            }
+        });
 
         this.setMinimumSize(new Dimension(
                 (int) Const.MINIMUM_FRAME_WIDTH,
@@ -119,7 +136,7 @@ public class PCTFrame extends JFrame {
         this.infoBox.add(aboutButton, BorderLayout.NORTH);
         this.infoBox.add(imprintButton, BorderLayout.SOUTH);
 
-        //this.getImageListPane().add(imageFileList, BorderLayout.CENTER);
+        this.imagePreviewPane.add(this.imagePreviewLabel, BorderLayout.CENTER);
 
         this.getUserControlPane().add(controlsBox, BorderLayout.LINE_START);
         this.getUserControlPane().add(userParameterInputBox, BorderLayout.CENTER);
@@ -137,9 +154,8 @@ public class PCTFrame extends JFrame {
                 (int) (this.getHeight()*Const.PREFERRED_LIST_HEIGHT_FACTOR)
         ));
 
-        //this.getImageListPane().setLayout(new BorderLayout());
-
         this.getImagePreviewPane().setBackground(Color.BLACK);
+        this.getImagePreviewPane().setLayout(new BorderLayout());
         this.getImagePreviewPane().setPreferredSize(new Dimension(
                 (int) (this.getWidth()*Const.PREFERRED_SIZE_FACTOR),
                 (int) (this.getHeight()*Const.PREFERRED_SIZE_FACTOR)
@@ -150,10 +166,19 @@ public class PCTFrame extends JFrame {
                 (int) (this.getHeight()*Const.PREFERRED_INPUT_HEIGHT_FACTOR)
         ));
 
+        this.imagePreviewLabel.setPreferredSize(this.getImagePreviewPane().getPreferredSize());
+        this.imagePreviewLabel.setText("");
+
         this.getUserControlPane().setLayout(new BorderLayout());
 
         this.imageFileList.setModel(new DefaultListModel<>());
         this.imageFileList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        this.imageFileList.addListSelectionListener(e ->
+            this.imagePreviewLabel.setIcon(Essentials.createCroppedImage(
+                    imageFileList.getSelectedValue(),
+                    imagePreviewLabel.getWidth(),
+                    imagePreviewLabel.getHeight()))
+        );
 
         this.imgUpButton.setToolTipText(ToolTipTexts.upButtonToolTip);
         this.imgUpButton.addActionListener(new ImageUpListener(this.getImageFileList()));
@@ -240,16 +265,12 @@ public class PCTFrame extends JFrame {
         this.listRadioButton.setToolTipText(ToolTipTexts.list2DRadioToolTip);
 
         this.aboutButton.setToolTipText(ToolTipTexts.aboutButtonToolTip);
-        this.aboutButton.addActionListener(e -> {
-            JDialog aboutDialog = new JDialog();
-
-            aboutDialog.setTitle(Const.ABOUT_TITLE);
-            aboutDialog.setSize(Const.DIALOG_WIDTH, Const.DIALOG_HEIGHT);
-            aboutDialog.setLocationRelativeTo(this);
-            aboutDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            aboutDialog.setResizable(false);
-            aboutDialog.setVisible(true);
-        });
+        this.aboutButton.addActionListener(e -> JOptionPane.showMessageDialog(
+                this,
+                Const.ABOUT_TEXT,
+                Const.ABOUT_TITLE,
+                JOptionPane.INFORMATION_MESSAGE
+        ));
 
         this.imprintButton.setToolTipText(ToolTipTexts.imprintButtonToolTip);
         this.imprintButton.addActionListener(e -> {

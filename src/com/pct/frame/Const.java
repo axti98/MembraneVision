@@ -16,8 +16,6 @@ public abstract class Const {
     public static final float MINIMUM_FRAME_HEIGHT = DEFAULT_FRAME_HEIGHT * 0.5f;
 
     public static final String FRAME_TITLE = "Parameter Converter Tool";
-    public static final int DIALOG_WIDTH = 640;
-    public static final int DIALOG_HEIGHT = 480;
     public static final String ABOUT_TITLE = "About";
     public static final String IMPRINT_TITLE = "Imprint";
 
@@ -72,8 +70,10 @@ public abstract class Const {
 
     public static final String IMPRINT_URL = "https://www.uni-muenster.de/Physik.TP/research/wittkowski/";
     // Todo: Write better about text
-    public static final String ABOUT_TEXT = "This application was developed by Alexander Tiekötter of \n"
-                                           +"the Institute of Theoretical Phyics at the University of Münster.";
+    public static final String ABOUT_TEXT = """
+            This application was developed by Alexander Tiekötter of\s
+            the Institute of Theoretical Phyics at the University of Münster.
+            Version: 0.2""";
 
     public static final int NO_INDEX_SELECTED = -1;
 
@@ -82,5 +82,7 @@ public abstract class Const {
     public static final String EXT_TIFF = "tiff";
     public static final String EXT_JPG = "jpg";
     public static final String EXT_PNG = "PNG";
+
+    @SuppressWarnings("unused")
     public static final String EXT_RSE = "rose";
 }

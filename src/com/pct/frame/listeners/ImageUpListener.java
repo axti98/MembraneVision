@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 public class ImageUpListener implements ActionListener {
 
-    private JList<String> workingList;
+    private final JList<String> workingList;
 
     public ImageUpListener(JList<String> AList){
         this.workingList = AList;
@@ -14,8 +14,7 @@ public class ImageUpListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(workingList.isSelectionEmpty())
-            return;
+        if(workingList.isSelectionEmpty()) return;
         DefaultListModel<String> model = (DefaultListModel<String>) workingList.getModel();
 
         int currentIndex = workingList.getSelectedIndex();
