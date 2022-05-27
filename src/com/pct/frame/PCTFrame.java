@@ -2,17 +2,47 @@ package com.pct.frame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PCTFrame extends JFrame {
-    private JPanel imagePreviewPane;
-    private JPanel imageListPane;
-    private JPanel userControlPane;
+    private final JPanel imagePreviewPane = new JPanel();
+    private final JPanel imageListPane = new JPanel();
+    private final JPanel userControlPane = new JPanel();
+    private final JPanel controlsBox = new JPanel();
+    private final JPanel movePanel = new JPanel();
+    private final JPanel userParameterInputBox = new JPanel();
+    private final JPanel addPanel = new JPanel();
+    private final JPanel infoBox = new JPanel();
+    private final JPanel distancePanel = new JPanel();
+    private final JPanel buttonPane = new JPanel();
+    private final JPanel expansionDegreePanel = new JPanel();
+    private final JPanel buttons = new JPanel();
+    private final JPanel radioButtons = new JPanel();
+    private final JPanel conversionPane = new JPanel();
+    private final JLabel distanceLabel = new JLabel(Const.DISTANCE_LABEL);
+    private final JLabel expansionDegreeLabel = new JLabel(Const.EXPANSION_DEGREE_LABEL);
+    private final JLabel conversionModeLabel = new JLabel(Const.CONVERSION_MODE_LABEL);
+    private final JButton imgUpButton = new JButton(Const.UP_TEXT);
+    private final JButton imgDownButton = new JButton(Const.DOWN_TEXT);
+    private final JButton imgAddButton = new JButton(Const.ADD_TEXT);
+    private final JButton imgRemoveButton = new JButton(Const.REMOVE_TEXT);
+    private final JButton imprintButton = new JButton(Const.IMPRINT_TITLE);
+    private final JButton aboutButton = new JButton(Const.ABOUT_TITLE);
+    private final JButton changeZOrder = new JButton(Const.CHANGE_Z_ORDER_TEXT);
+    private final JButton convertButton = new JButton(Const.CONVERT_TEXT);
+    private final JTextField expansionDegreeText = new JTextField();
+    private final JTextField distanceText = new JTextField();
+    private final JRadioButton listRadioButton = new JRadioButton(Const.LIST_RADIO_TEXT);
+    private final JRadioButton dimensionalRadioButton = new JRadioButton(Const.DIMENSIONAL_RADIO_TEXT);
+    private final ButtonGroup conversionModeGroup = new ButtonGroup();
+    public final JList<String> imageFileList = new JList<>();
 
     private final Point screenCenter = new Point();
 
     public PCTFrame(){
         super();
-        initUI();
+        this.initUI();
     }
 
     // TODO: Adding Tooltips
@@ -41,7 +71,6 @@ public class PCTFrame extends JFrame {
             throw new RuntimeException(e);
         }
 
-        this.setUpUserInterface();
         this.setupComponents();
         this.addComponents();
         this.pack();
@@ -64,16 +93,6 @@ public class PCTFrame extends JFrame {
 
         this.getImageListPane().setLayout(new BorderLayout());
 
-        JList<String> imageFileList = new JList<>();
-        imageFileList.setListData(new String[]{
-                "Test1",
-                "Test2",
-                "Test3",
-                "Test4",
-                "Test5",
-                "Test6",
-        });
-
         this.getImageListPane().add(imageFileList, BorderLayout.CENTER);
         //------------------------------------------------------------------------------------------------------
 
@@ -87,7 +106,6 @@ public class PCTFrame extends JFrame {
         this.getImagePreviewPane().setBackground(Color.BLACK);
         //------------------------------------------------------------------------------------------------------
 
-
         //------------------------------------------------------------------------------------------------------
         // CONTROLS BOX SECTION
         this.getUserControlPane().setPreferredSize(new Dimension(
@@ -99,16 +117,12 @@ public class PCTFrame extends JFrame {
 
         this.getUserControlPane().setLayout(new BorderLayout());
 
-        JPanel controlsBox = new JPanel();
         controlsBox.setPreferredSize(new Dimension(
                 (int) this.getImageListPane().getPreferredSize().getWidth(),
                 (int) this.getUserControlPane().getPreferredSize().getHeight()
         ));
         controlsBox.setLayout(new BorderLayout());
 
-        JPanel movePanel = new JPanel();
-        JButton imgUpButton = new JButton(Const.UP_TEXT);
-        JButton imgDownButton = new JButton(Const.DOWN_TEXT);
         movePanel.setLayout(new BorderLayout());
         movePanel.setBorder(BorderFactory.createEmptyBorder(
                 Const.MOVE_MARGIN_TOP,
@@ -120,9 +134,9 @@ public class PCTFrame extends JFrame {
         movePanel.add(imgDownButton, BorderLayout.PAGE_END);
         controlsBox.add(movePanel, BorderLayout.LINE_START);
 
-        JPanel addPanel = new JPanel();
-        JButton imgAddButton = new JButton(Const.ADD_TEXT);
-        JButton imgRemoveButton = new JButton(Const.REMOVE_TEXT);
+        imgAddButton.addActionListener(new AddImageListener());
+        imgRemoveButton.addActionListener(new RemoveImageListener());
+
         addPanel.setLayout(new BorderLayout());
         addPanel.setBorder(BorderFactory.createEmptyBorder(
                 Const.ADD_MARGIN_TOP,
@@ -134,30 +148,22 @@ public class PCTFrame extends JFrame {
         addPanel.add(imgRemoveButton, BorderLayout.PAGE_END);
         controlsBox.add(addPanel, BorderLayout.LINE_END);
 
-        JPanel userParameterInputBox = new JPanel();
         userParameterInputBox.setLayout(new BorderLayout());
 
-        JPanel expansionDegreePanel = new JPanel();
-        JLabel expansionDegreeLabel = new JLabel(Const.EXPANSION_DEGREE_LABEL);
         expansionDegreeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         expansionDegreeLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
         expansionDegreePanel.add(expansionDegreeLabel);
 
-        JTextField expansionDegreeText = new JTextField();
         expansionDegreeText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
         expansionDegreePanel.add(expansionDegreeText);
 
-        JPanel distancePanel = new JPanel();
-        JLabel distanceLabel = new JLabel(Const.DISTANCE_LABEL);
         distanceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         distanceLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
         distancePanel.add(distanceLabel, BorderLayout.PAGE_END);
 
-        JTextField distanceText = new JTextField();
         distanceText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
         distancePanel.add(distanceText);
 
-        JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new BorderLayout());
         buttonPane.setBorder(BorderFactory.createEmptyBorder(
                 Const.INFO_MARGIN_TOP,
@@ -168,7 +174,6 @@ public class PCTFrame extends JFrame {
         buttonPane.add(expansionDegreePanel, BorderLayout.PAGE_START);
         buttonPane.add(distancePanel, BorderLayout.PAGE_END);
 
-        JPanel conversionPane = new JPanel();
         conversionPane.setLayout(new BorderLayout());
         conversionPane.setBorder(BorderFactory.createEmptyBorder(
                 Const.INFO_MARGIN_TOP,
@@ -177,31 +182,21 @@ public class PCTFrame extends JFrame {
                 Const.INFO_MARGIN_RIGHT
         ));
 
-        JLabel conversionModeLabel = new JLabel(Const.CONVERSION_MODE_LABEL);
         conversionModeLabel.setHorizontalAlignment(SwingUtilities.RIGHT);
         conversionModeLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
 
-        JRadioButton listRadioButton = new JRadioButton(Const.LIST_RADIO_TEXT);
         listRadioButton.setSelected(true);
         conversionPane.add(listRadioButton, BorderLayout.PAGE_START);
-
-        JRadioButton dimensionalRadioButton = new JRadioButton(Const.DIMENSIONAL_RADIO_TEXT);
         conversionPane.add(dimensionalRadioButton, BorderLayout.PAGE_START);
 
-        ButtonGroup conversionModeGroup = new ButtonGroup();
         conversionModeGroup.add(dimensionalRadioButton);
         conversionModeGroup.add(listRadioButton);
 
-        JPanel radioButtons = new JPanel();
         radioButtons.add(conversionModeLabel);
         radioButtons.add(listRadioButton);
         radioButtons.add(dimensionalRadioButton);
         conversionPane.add(radioButtons, BorderLayout.PAGE_START);
 
-        JButton changeZOrder = new JButton(Const.CHANGE_Z_ORDER_TEXT);
-        JButton convertButton = new JButton(Const.CONVERT_TEXT);
-
-        JPanel buttons = new JPanel();
         buttons.add(changeZOrder);
         buttons.add(convertButton);
         conversionPane.add(buttons, BorderLayout.PAGE_END);
@@ -209,7 +204,6 @@ public class PCTFrame extends JFrame {
         userParameterInputBox.add(buttonPane, BorderLayout.LINE_START);
         userParameterInputBox.add(conversionPane, BorderLayout.CENTER);
 
-        JButton aboutButton = new JButton(Const.ABOUT_TITLE);
         aboutButton.addActionListener(e -> {
             JDialog aboutDialog = new JDialog();
             aboutDialog.setTitle(Const.ABOUT_TITLE);
@@ -220,7 +214,6 @@ public class PCTFrame extends JFrame {
             aboutDialog.setVisible(true);
         });
 
-        JButton imprintButton = new JButton(Const.IMPRINT_TITLE);
         imprintButton.addActionListener(e -> {
             JDialog imprintDialog = new JDialog();
             imprintDialog.setTitle(Const.IMPRINT_TITLE);
@@ -231,7 +224,6 @@ public class PCTFrame extends JFrame {
             imprintDialog.setVisible(true);
         });
 
-        JPanel infoBox = new JPanel();
         infoBox.setLayout(new BorderLayout(Const.INFO_HGAP, Const.INFO_VGAP));
         infoBox.setBorder(BorderFactory.createEmptyBorder(
                 Const.INFO_MARGIN_TOP,
@@ -247,12 +239,6 @@ public class PCTFrame extends JFrame {
         this.getUserControlPane().add(userParameterInputBox, BorderLayout.CENTER);
         this.getUserControlPane().add(infoBox, BorderLayout.LINE_END);
         //------------------------------------------------------------------------------------------------------
-    }
-
-    private void setUpUserInterface() {
-        this.setImagePreviewPane(new JPanel());
-        this.setImageListPane(new JPanel());
-        this.setUserControlPane(new JPanel());
     }
 
     private Point getScreenCenter() {
@@ -272,23 +258,27 @@ public class PCTFrame extends JFrame {
         return imagePreviewPane;
     }
 
-    public void setImagePreviewPane(JPanel imagePreviewPane) {
-        this.imagePreviewPane = imagePreviewPane;
-    }
-
     public JPanel getImageListPane() {
         return imageListPane;
-    }
-
-    public void setImageListPane(JPanel imageListPane) {
-        this.imageListPane = imageListPane;
     }
 
     public JPanel getUserControlPane() {
         return userControlPane;
     }
 
-    public void setUserControlPane(JPanel userControlPane) {
-        this.userControlPane = userControlPane;
+    private class AddImageListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
+    }
+
+    private class RemoveImageListener implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+        }
     }
 }

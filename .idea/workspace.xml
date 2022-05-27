@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ecf6168a-a1f1-434f-8436-6d949b9e206c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/pct/frame/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/frame/Const.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/pct/frame/PCTFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/pct/frame/PCTFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
