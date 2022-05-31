@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ParameterConverterTool.iml" filepath="$PROJECT_DIR$/ParameterConverterTool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MembraneVision.iml" filepath="$PROJECT_DIR$/MembraneVision.iml" />
     </modules>
   </component>
 </project>
