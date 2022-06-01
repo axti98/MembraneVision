@@ -13,26 +13,26 @@ public final class ToolTipTexts {
 
     public static final String downButtonToolTip = "Moves the selected image one position down in the list";
 
-    public static final String aboutButtonToolTip = "Information's about the program and it's author.";
+    public static final String aboutButtonToolTip = "Information's about the program and it's author";
 
-    public static final String imprintButtonToolTip = "Opens the authors imprint page.";
+    public static final String imprintButtonToolTip = "Opens the authors imprint page";
 
     public static final String changeZOrderButtonToolTip = "Opens a window where the position in the depth coordinate " +
-            "z can  be changed.";
+            "z can  be changed";
 
     public static final String convertButtonToolTip = "Starts the conversion of the given images in the selected mode " +
-            "into spherical harmonics.";
+            "into spherical harmonics";
 
-    public static final String list2DRadioToolTip = "In this mode, all opened images in the list will be converted " +
-            "into spherical harmonics independently.";
+    public static final String list2DRadioToolTip = "In this mode, all selected images in the list will be converted " +
+            "into spherical harmonics independently";
 
     public static final String single3DRadioToolTip = "In this mode, a single 3D image will be created by the list of " +
-            "images. It is necessary that they make up a meaningful object.";
+            "images. It is necessary that they make up a meaningful object";
 
     public static final String expansionDegreeTextToolTip = "In this field you can enter the degree of expansion in" +
             "for the spherical harmonics. Note that in this expansion, a degree of k means 2k+1 parameters that must be" +
-            "saved.";
+            "saved";
 
     public static final String distanceTextToolTip = "Here you can enter the distance between the image sections that" +
-            "will be used to calculate the voxel size.";
+            "will be used to calculate the voxel size";
 }

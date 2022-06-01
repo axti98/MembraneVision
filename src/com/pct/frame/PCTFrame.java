@@ -1,12 +1,10 @@
 package com.pct.frame;
 
 import com.pct.Essentials;
-import com.pct.frame.listeners.AddImageListener;
-import com.pct.frame.listeners.ImageDownListener;
-import com.pct.frame.listeners.ImageUpListener;
-import com.pct.frame.listeners.RemoveImageListener;
+import com.pct.frame.listeners.*;
 
 import javax.swing.*;
+import javax.swing.text.PlainDocument;
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -172,7 +170,7 @@ public class PCTFrame extends JFrame {
         this.getUserControlPane().setLayout(new BorderLayout());
 
         this.imageFileList.setModel(new DefaultListModel<>());
-        this.imageFileList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        this.imageFileList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.imageFileList.addListSelectionListener(e ->
             this.imagePreviewLabel.setIcon(Essentials.createCroppedImage(
                     imageFileList.getSelectedValue(),
@@ -223,6 +221,9 @@ public class PCTFrame extends JFrame {
 
         this.expansionDegreeText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
         this.expansionDegreeText.setToolTipText(ToolTipTexts.expansionDegreeTextToolTip);
+        this.expansionDegreeText.setText("1");
+        PlainDocument doc = (PlainDocument) this.expansionDegreeText.getDocument();
+        doc.setDocumentFilter(new IntegerFilter());
 
         this.distanceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
         this.distanceLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
@@ -232,7 +233,17 @@ public class PCTFrame extends JFrame {
 
         this.changeZOrder.setToolTipText(ToolTipTexts.changeZOrderButtonToolTip);
 
+        this.dimensionalRadioButton.setToolTipText(ToolTipTexts.single3DRadioToolTip);
+
+        this.listRadioButton.setSelected(true);
+        this.listRadioButton.setToolTipText(ToolTipTexts.list2DRadioToolTip);
+
         this.convertButton.setToolTipText(ToolTipTexts.convertButtonToolTip);
+        this.convertButton.addActionListener(new ConvertListener(
+                this.getImageFileList(),
+                Integer.parseInt(this.expansionDegreeText.getText()),
+                this.listRadioButton.isSelected()
+        ));
 
         // CHANGE TO TRUE WHEN 3D WILL BE AVAILABLE
         this.distanceText.setEnabled(false);
@@ -258,11 +269,6 @@ public class PCTFrame extends JFrame {
 
         this.conversionModeLabel.setHorizontalAlignment(SwingUtilities.RIGHT);
         this.conversionModeLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
-
-        this.dimensionalRadioButton.setToolTipText(ToolTipTexts.single3DRadioToolTip);
-
-        this.listRadioButton.setSelected(true);
-        this.listRadioButton.setToolTipText(ToolTipTexts.list2DRadioToolTip);
 
         this.aboutButton.setToolTipText(ToolTipTexts.aboutButtonToolTip);
         this.aboutButton.addActionListener(e -> JOptionPane.showMessageDialog(

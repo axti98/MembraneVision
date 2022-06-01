@@ -31,7 +31,6 @@ public abstract class Const {
     public static final String DISTANCE_LABEL = "Distance:";
 
     public static final String CONVERSION_MODE_LABEL = "Conversion mode:";
-
     public static final String LIST_RADIO_TEXT = "List of 2D images";
 
     public static final String DIMENSIONAL_RADIO_TEXT = "Single 3D image";
@@ -75,6 +74,11 @@ public abstract class Const {
             the Institute of Theoretical Phyics at the University of Münster.
             Version: 0.2""";
 
+    public static final String FALSE_OS = "The operating system you are running is not supported." +
+            " Please try on another machine.";
+
+    public static final String OS_NAME_PROPERTY = "os.name";
+
     public static final int NO_INDEX_SELECTED = -1;
 
     // FILE EXTENSIONS
@@ -84,5 +88,14 @@ public abstract class Const {
     public static final String EXT_PNG = "PNG";
 
     @SuppressWarnings("unused")
-    public static final String EXT_RSE = "rose";
+    public static final String EXT_RSE = "memv";
+
+    // OS CONSTANTS
+    public static final String OS_NAME_WIN = "Windows";
+
+    public static final String OS_NAME_LINUX = "Linux";
+
+    public static final String EXC_EXTENSION_WIN = ".exe";
+
+    public static final String EXC_EXTENSION_LINUX = "";
 }

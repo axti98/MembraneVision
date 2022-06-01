@@ -29,4 +29,12 @@ public final class Essentials {
 
         return new ImageIcon(croppedImage);
     }
+
+    public static File commandExecutionFile(String APath)
+    {
+        File file = new File(APath);
+        if(!file.exists()) throw new IllegalArgumentException("The file " + APath + " does not exist.");
+
+        return file;
+    }
 }

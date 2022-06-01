@@ -32,7 +32,9 @@ public class AddImageListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        fileChooser.showOpenDialog(Main.frame);
+        int option = fileChooser.showOpenDialog(Main.frame);
+
+        if(option == JFileChooser.CANCEL_OPTION) return;
 
         if(Main.frame.getImageFileList().getModel().getSize() == 0) {
             Main.frame.getImgUpButton().setEnabled(true);
