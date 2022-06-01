@@ -33,7 +33,12 @@ public final class Essentials {
     public static File commandExecutionFile(String APath)
     {
         File file = new File(APath);
-        if(!file.exists()) throw new IllegalArgumentException("The file " + APath + " does not exist.");
+        if(!file.exists()) {
+            String msg = "Converter tool was not found. Please ensure that the file lies in the same folder as " +
+                    "the executable.";
+            JOptionPane.showMessageDialog(Main.frame, msg, "", JOptionPane.ERROR_MESSAGE);
+            throw new IllegalArgumentException(msg);
+        }
 
         return file;
     }

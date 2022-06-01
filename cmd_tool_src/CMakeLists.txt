@@ -3,4 +3,5 @@ project(cmd_tool_src)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(cmd_tool_src main.cpp)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../../)
+add_executable(tool main.cpp)

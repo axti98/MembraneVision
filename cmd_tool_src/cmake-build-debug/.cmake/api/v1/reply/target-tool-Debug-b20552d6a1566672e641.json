@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "cmd_tool_src.exe"
+			"path" : "C:/Users/User/IdeaProjects/MembraneVision/tool.exe"
 		},
 		{
-			"path" : "cmd_tool_src.pdb"
+			"path" : "C:/Users/User/IdeaProjects/MembraneVision/tool.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -27,7 +27,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 7,
 				"parent" : 0
 			}
 		]
@@ -59,7 +59,7 @@
 			]
 		}
 	],
-	"id" : "cmd_tool_src::@6890427a1f51a3e7e1df",
+	"id" : "tool::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -79,8 +79,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "cmd_tool_src",
-	"nameOnDisk" : "cmd_tool_src.exe",
+	"name" : "tool",
+	"nameOnDisk" : "tool.exe",
 	"paths" : 
 	{
 		"build" : ".",

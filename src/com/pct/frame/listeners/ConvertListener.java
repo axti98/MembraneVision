@@ -27,7 +27,7 @@ public class ConvertListener implements ActionListener
     public void actionPerformed(ActionEvent e) {
         StringBuilder arguments = new StringBuilder(" " + expansionDegree + "");
         ListModel<String> fileListModel = imageFileList.getModel();
-        String path = "." + File.separator + "cmd_tool";
+        String path = "." + File.separator + "tool";
         List<String> command = new ArrayList<>();
 
         if (imageFileList.isSelectionEmpty() && fileListModel.getSize() != 0 && selectionMode) {
