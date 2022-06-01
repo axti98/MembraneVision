@@ -1,4 +1,5 @@
 #include <iostream>
+#include <boost/math/special_functions/spherical_harmonic.hpp>
 
 int main(int argc, char *argv[]) {
     std::cout << "Arg count: "<< argc << std::endl;

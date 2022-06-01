@@ -1,8 +1,7 @@
 # ninja log v5
 3	536	6757829111092421	CMakeFiles/cmd_tool_src.dir/main.cpp.obj	7d2edb2d48258818
 537	649	6757829112163406	cmd_tool_src.exe	a766316a2bb5a724
-4	156	6757913212329847	build.ninja	9adece656a7dfee9
-0	545	6757910806328143	CMakeFiles/tool.dir/main.cpp.obj	834f29f5a675e95d
+4	156	6757949719237769	build.ninja	9adece656a7dfee9
+3	542	6757926995264481	CMakeFiles/tool.dir/main.cpp.obj	d1cc3c1e31f8d359
+542	633	6757926996145283	C:/Users/User/IdeaProjects/MembraneVision/tool.exe	fcf19b67fc532203
 546	669	6757910807582017	tool.exe	9a474ce0a9c2d321
-3	161	6757913030598532	../tool.exe	e5d58f84d1341fa5
-2	100	6757913223760362	C:/Users/User/IdeaProjects/MembraneVision/tool.exe	2431b96ad0d6efeb

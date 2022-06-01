@@ -1,4 +1,4 @@
-package com.pct.frame;
+package com.pct;
 
 import java.awt.*;
 

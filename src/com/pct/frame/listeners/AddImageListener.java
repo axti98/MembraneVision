@@ -1,7 +1,7 @@
 package com.pct.frame.listeners;
 
 import com.pct.Main;
-import com.pct.frame.Const;
+import com.pct.Const;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
