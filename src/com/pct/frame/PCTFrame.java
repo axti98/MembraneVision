@@ -147,7 +147,6 @@ public class PCTFrame extends JFrame {
     }
 
     private void setupComponents(){
-        // TODO: Set design of list view
         this.getImageListPane().setPreferredSize(new Dimension(
                 (int) (this.getWidth()*Const.PREFERRED_LIST_WIDTH_FACTOR),
                 (int) (this.getHeight()*Const.PREFERRED_LIST_HEIGHT_FACTOR)

@@ -4,41 +4,22 @@ project(cmd_tool_src)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../../)
 
-add_executable(tool main.cpp Const.h)
-
 find_package(OpenMP)
+
+# Where to find CMake modules and OpenCV
+set(OpenCV_DIR "C:\\opencv\\build_mingw\\install")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
+
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+# add libs you need
+set(OpenCV_LIBS opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)
+
+add_executable(tool main.cpp Const.h SegmentationHandler.cpp SegmentationHandler.h)
+
+# linking
+target_link_libraries(tool ${OpenCV_LIBS})
 if(OpenMP_CXX_FOUND)
-    target_link_libraries(tool PUBLIC OpenMP::OpenMP_CXX)
-endif()
-
-# Set StartUp Project
-set_property( DIRECTORY PROPERTY VS_STARTUP_PROJECT "cmd_tool_src" )
-
-# Find Package
-set( OpenCV_DIR "C:\\opencv\\build_mingw" )
-option( OpenCV_STATIC OFF )
-find_package( OpenCV REQUIRED )
-
-# Set Static Link Runtime Library
-if( OpenCV_STATIC )
-    foreach( flag_var
-            CMAKE_C_FLAGS CMAKE_C_FLAGS_DEBUG CMAKE_C_FLAGS_RELEASE
-            CMAKE_C_FLAGS_MINSIZEREL CMAKE_C_FLAGS_RELWITHDEBINFO
-            CMAKE_CXX_FLAGS CMAKE_CXX_FLAGS_DEBUG CMAKE_CXX_FLAGS_RELEASE
-            CMAKE_CXX_FLAGS_MINSIZEREL CMAKE_CXX_FLAGS_RELWITHDEBINFO )
-        if( ${flag_var} MATCHES "/MD" )
-            string( REGEX REPLACE "/MD" "/MT" ${flag_var} "${${flag_var}}" )
-        endif()
-    endforeach()
-endif()
-
-if( OpenCV_FOUND )
-    # Additional Include Directories
-    include_directories( ${OpenCV_INCLUDE_DIRS} )
-
-    # Additional Library Directories
-    link_directories( ${OpenCV_LIB_DIR} )
-
-    # Additional Dependencies
-    target_link_libraries( tool PUBLIC ${OpenCV_LIBS} )
+    target_link_libraries(tool OpenMP::OpenMP_CXX)
 endif()

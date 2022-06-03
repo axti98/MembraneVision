@@ -27,45 +27,46 @@ public class ConvertListener implements ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        StringBuilder arguments = new StringBuilder(" " + expansionDegree + " " + distance + "");
         ListModel<String> fileListModel = imageFileList.getModel();
         String path = "." + File.separator + "tool";
         List<String> command = new ArrayList<>();
 
-        if (imageFileList.isSelectionEmpty() && fileListModel.getSize() != 0 && selectionMode) {
-            for (int i = 0; i < fileListModel.getSize(); i++)
-                arguments.append(" ").append(fileListModel.getElementAt(i));
-        }
-
-        if (!imageFileList.isSelectionEmpty() && selectionMode) {
-            for(String str : imageFileList.getSelectedValuesList())
-                arguments.append(" ").append(str);
-        }
-
         File file;
+        ProcessBuilder builder = new ProcessBuilder();
         if(System.getProperty(Const.OS_NAME_PROPERTY).contains(Const.OS_NAME_WIN))
         {
             path += Const.EXC_EXTENSION_WIN;
             file = Essentials.commandExecutionFile(path);
 
             command.add("cmd.exe");
-            command.add("/c start " + file.getAbsolutePath() + arguments);
+            command.add("/c");
+            command.add("start");
+            command.add(file.getAbsolutePath());
+            command.add(Integer.toString(expansionDegree));
+            command.add(Float.toString(distance));
+
+            for(int i = 0; i < fileListModel.getSize(); i++)
+            {
+                command.add(fileListModel.getElementAt(i));
+            }
+
+            builder.command(command);
         }
         else if(System.getProperty(Const.OS_NAME_PROPERTY).contains(Const.OS_NAME_LINUX))
         {
             path += Const.EXC_EXTENSION_WIN;
             file = Essentials.commandExecutionFile(path);
-
-            command.add(file.getAbsolutePath() + arguments);
         } else {
             throw new RuntimeException(Const.FALSE_OS);
         }
 
         try {
-            Process process = new ProcessBuilder(command).start();
-            while(process.isAlive());
-            System.out.println("Process ended with exit value " + process.exitValue());
+            Process process = builder.start();
+            int exitCode = process.waitFor();
+            System.out.println(exitCode);
         } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        } catch (InterruptedException ex) {
             throw new RuntimeException(ex);
         }
     }

@@ -1667,7 +1667,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "[C:/opencv/build_mingw][v4.5.5()]"
+			"value" : "[C:/opencv/build_mingw/install][v4.5.5()]"
 		},
 		{
 			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_OpenMP",
@@ -1706,6 +1706,18 @@
 			"value" : "[-fopenmp][C:/Program Files/JetBrains/CLion 2021.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/libgomp.dll.a][C:/Program Files/JetBrains/CLion 2021.3.3/bin/mingw/x86_64-w64-mingw32/lib/libmingwthrd.a][C:/Program Files/JetBrains/CLion 2021.3.3/bin/mingw/x86_64-w64-mingw32/lib/libmingwthrd.a][v4.5()]"
 		},
 		{
+			"name" : "OpenCV_BACKWARD_COMPA",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Add some variable to make this script compatible with the other version of FindOpenCV.cmake"
+				}
+			],
+			"type" : "BOOL",
+			"value" : "OFF"
+		},
+		{
 			"name" : "OpenCV_DIR",
 			"properties" : 
 			[
@@ -1715,7 +1727,19 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "OpenCV_DIR-NOTFOUND"
+			"value" : "C:/opencv/build_mingw/install"
+		},
+		{
+			"name" : "OpenCV_FOUND",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : ""
+				}
+			],
+			"type" : "BOOL",
+			"value" : "true"
 		},
 		{
 			"name" : "OpenCV_STATIC",

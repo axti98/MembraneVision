@@ -166,16 +166,15 @@
 			"path" : "C:/Program Files/JetBrains/CLion 2021.3.3/bin/cmake/win/share/cmake-3.22/Modules/FindPackageMessage.cmake"
 		},
 		{
-			"isExternal" : true,
-			"path" : "C:/opencv/build_mingw/OpenCVConfig-version.cmake"
+			"path" : "cmake/FindOpenCV.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/opencv/build_mingw/OpenCVConfig.cmake"
+			"path" : "C:/opencv/build_mingw/install/OpenCVConfig.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/opencv/build_mingw/x64/mingw/lib/OpenCVConfig.cmake"
+			"path" : "C:/opencv/build_mingw/install/x64/mingw/lib/OpenCVConfig.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -189,11 +188,11 @@
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/opencv/build_mingw/x64/mingw/lib/OpenCVModules.cmake"
+			"path" : "C:/opencv/build_mingw/install/x64/mingw/lib/OpenCVModules.cmake"
 		},
 		{
 			"isExternal" : true,
-			"path" : "C:/opencv/build_mingw/x64/mingw/lib/OpenCVModules-release.cmake"
+			"path" : "C:/opencv/build_mingw/install/x64/mingw/lib/OpenCVModules-release.cmake"
 		}
 	],
 	"kind" : "cmakeFiles",

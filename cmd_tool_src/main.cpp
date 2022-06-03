@@ -1,8 +1,10 @@
 #include <iostream>
-#include <opencv2/core.hpp>
+#include <fstream>
 #include "Const.h"
 #include <exception>
 #include <string>
+#include "SegmentationHandler.h"
+
 
 class WrongArgException: public std::exception
 {
@@ -13,6 +15,8 @@ class WrongArgException: public std::exception
 } wrongArgException;
 
 int exit_code = CORRECT_EXIT_CODE;
+
+using namespace cv;
 
 int main(int argc, char *argv[]) {
 
@@ -41,9 +45,8 @@ int main(int argc, char *argv[]) {
         std::cout << "Img " << i << ": " << image_paths[i] << std::endl;
     }
 
-    
-
-    system("pause");
+    SegmentationHandler sh(image_paths, image_count);
+    sh.execute_segmentation();
 
     delete [] image_paths;
     return exit_code;
