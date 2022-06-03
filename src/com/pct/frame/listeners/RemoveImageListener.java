@@ -1,11 +1,12 @@
 package com.pct.frame.listeners;
 
-import com.pct.Main;
 import com.pct.Const;
+import com.pct.Main;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 public class RemoveImageListener implements ActionListener {
 
@@ -17,12 +18,16 @@ public class RemoveImageListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        int currentIndex = workingList.getSelectedIndex();
-        if(currentIndex != Const.NO_INDEX_SELECTED)
+        List<String> selectedValuesList = workingList.getSelectedValuesList();
+        if(!selectedValuesList.isEmpty())
         {
             DefaultListModel<String> model = (DefaultListModel<String>) workingList.getModel();
-            model.remove(currentIndex);
-            if(model.getSize() == 0){
+            for(String el : selectedValuesList)
+            {
+                model.removeElement(el);
+            }
+
+            if(model.getSize() == Const.EMPTY_LIST){
                 Main.frame.getImgUpButton().setEnabled(false);
                 Main.frame.getImgDownButton().setEnabled(false);
                 Main.frame.getImgRemoveButton().setEnabled(false);

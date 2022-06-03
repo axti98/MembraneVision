@@ -173,7 +173,8 @@ public class PCTFrame extends JFrame {
         this.imageFileList.setModel(new DefaultListModel<>());
         this.imageFileList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         this.imageFileList.addListSelectionListener(e -> {
-            if (this.getImageFileList().getModel().getSize() != Const.NO_IMAGE_IN_LIST) {
+            if (this.getImageFileList().getModel().getSize() != Const.NO_IMAGE_IN_LIST
+                    && this.getImageFileList().getSelectedValue() != null) {
                 this.imagePreviewLabel.setIcon(Essentials.createCroppedImage(
                         imageFileList.getSelectedValue(),
                         imagePreviewLabel.getWidth(),

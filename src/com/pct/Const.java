@@ -5,6 +5,8 @@ import java.awt.*;
 public abstract class Const {
 
     public static final String FILE_CHOOSER_TITLE = "Choose a file...";
+    public static final int EMPTY_LIST = 0;
+    public static final String EMPTY_STR = "";
 
     private Const(){}
 
@@ -97,5 +99,5 @@ public abstract class Const {
 
     public static final String EXC_EXTENSION_WIN = ".exe";
 
-    public static final String EXC_EXTENSION_LINUX = "";
+    public static final String EXC_EXTENSION_LINUX = EMPTY_STR;
 }

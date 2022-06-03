@@ -28,8 +28,7 @@ int main(int argc, char *argv[]) {
     int distance = static_cast<int>(std::strtol(argv[ARR_POS_DIS], nullptr, DEFAULT_RADIX));
 
     auto* image_paths = new std::string[image_count];
-    std::cout << "Args: " << argc << std::endl;
-    std::cout << "Imgs: " << image_count << std::endl;
+    std::cout << "Image count: " << image_count << std::endl;
 
     for(int i = ARR_POS_IMG_BEGIN; i < argc; i++)
     {
@@ -41,6 +40,8 @@ int main(int argc, char *argv[]) {
     {
         std::cout << "Img " << i << ": " << image_paths[i] << std::endl;
     }
+
+    
 
     system("pause");
 

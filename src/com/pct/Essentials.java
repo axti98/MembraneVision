@@ -36,7 +36,7 @@ public final class Essentials {
         if(!file.exists()) {
             String msg = "Converter tool was not found. Please ensure that the file lies in the same folder as " +
                     "the executable.";
-            JOptionPane.showMessageDialog(Main.frame, msg, "", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(Main.frame, msg, Const.EMPTY_STR, JOptionPane.ERROR_MESSAGE);
             throw new IllegalArgumentException(msg);
         }
 
