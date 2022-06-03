@@ -46,8 +46,8 @@ int main(int argc, char *argv[]) {
     }
 
     SegmentationHandler sh(image_paths, image_count);
-    sh.execute_segmentation();
-
+    cv::Mat* segmentet_imgs = sh.execute_segmentation();
+    
     delete [] image_paths;
     return exit_code;
 }

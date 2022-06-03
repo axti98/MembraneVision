@@ -9,6 +9,7 @@
 
 #include <opencv2/core.hpp>
 #include <opencv2/imgcodecs.hpp>
+#include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 
 #include "Const.h"
@@ -19,7 +20,7 @@ private:
     std::string* image_paths;
 public:
     explicit SegmentationHandler(std::string* AImage_paths, int AImage_count);
-    std::string* execute_segmentation();
+    cv::Mat* execute_segmentation();
 };
 
 #endif //CMD_TOOL_SRC_SEGMENTATIONHANDLER_H

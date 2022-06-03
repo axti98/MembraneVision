@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "C:/Users/User/IdeaProjects/MembraneVision/tool.exe"
+			"path" : "C:/Users/User/IdeaProjects/MembraneVision/out/artifacts/MembraneVision/tool.exe"
 		},
 		{
-			"path" : "C:/Users/User/IdeaProjects/MembraneVision/tool.pdb"
+			"path" : "C:/Users/User/IdeaProjects/MembraneVision/out/artifacts/MembraneVision/tool.pdb"
 		}
 	],
 	"backtrace" : 1,
