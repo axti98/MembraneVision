@@ -36,16 +36,18 @@ public class AddImageListener implements ActionListener {
 
         if(option == JFileChooser.CANCEL_OPTION) return;
 
-        if(Main.frame.getImageFileList().getModel().getSize() == 0) {
-            Main.frame.getImgUpButton().setEnabled(true);
-            Main.frame.getImgDownButton().setEnabled(true);
-        }
-
         Collection<String> files = new ArrayList<>();
         for(File f : fileChooser.getSelectedFiles()){
             files.add(f.getAbsolutePath());
         }
 
         model.addAll(files);
+
+        if(Main.frame.getImageFileList().getModel().getSize() != 0) {
+            Main.frame.getImgUpButton().setEnabled(true);
+            Main.frame.getImgDownButton().setEnabled(true);
+            Main.frame.getImgRemoveButton().setEnabled(true);
+            Main.frame.getConvertButton().setEnabled(true);
+        }
     }
 }

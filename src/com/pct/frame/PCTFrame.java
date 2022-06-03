@@ -172,12 +172,16 @@ public class PCTFrame extends JFrame {
 
         this.imageFileList.setModel(new DefaultListModel<>());
         this.imageFileList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-        this.imageFileList.addListSelectionListener(e ->
-            this.imagePreviewLabel.setIcon(Essentials.createCroppedImage(
-                    imageFileList.getSelectedValue(),
-                    imagePreviewLabel.getWidth(),
-                    imagePreviewLabel.getHeight()))
-        );
+        this.imageFileList.addListSelectionListener(e -> {
+            if (this.getImageFileList().getModel().getSize() != Const.NO_IMAGE_IN_LIST) {
+                this.imagePreviewLabel.setIcon(Essentials.createCroppedImage(
+                        imageFileList.getSelectedValue(),
+                        imagePreviewLabel.getWidth(),
+                        imagePreviewLabel.getHeight()));
+            } else {
+                this.imagePreviewLabel.setIcon(null);
+            }
+        });
 
         this.imgUpButton.setToolTipText(ToolTipTexts.upButtonToolTip);
         this.imgUpButton.addActionListener(new ImageUpListener(this.getImageFileList()));
@@ -206,6 +210,7 @@ public class PCTFrame extends JFrame {
 
         this.imgRemoveButton.addActionListener(new RemoveImageListener(this.getImageFileList()));
         this.imgRemoveButton.setToolTipText(ToolTipTexts.removeButtonToolTip);
+        this.imgRemoveButton.setEnabled(false);
 
         this.addPanel.setLayout(new BorderLayout());
         this.addPanel.setBorder(BorderFactory.createEmptyBorder(
@@ -231,6 +236,7 @@ public class PCTFrame extends JFrame {
 
         this.distanceText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
         this.distanceText.setToolTipText(ToolTipTexts.distanceTextToolTip);
+        this.distanceText.setText("0");
 
         this.changeZOrder.setToolTipText(ToolTipTexts.changeZOrderButtonToolTip);
 
@@ -240,9 +246,11 @@ public class PCTFrame extends JFrame {
         this.listRadioButton.setToolTipText(ToolTipTexts.list2DRadioToolTip);
 
         this.convertButton.setToolTipText(ToolTipTexts.convertButtonToolTip);
+        this.convertButton.setEnabled(false);
         this.convertButton.addActionListener(new ConvertListener(
                 this.getImageFileList(),
                 Integer.parseInt(this.expansionDegreeText.getText()),
+                Integer.parseInt(this.distanceText.getText()),
                 this.listRadioButton.isSelected()
         ));
 
@@ -331,4 +339,12 @@ public class PCTFrame extends JFrame {
     public JButton getImgDownButton() {
         return imgDownButton;
     }
+    public JButton getImgRemoveButton() {
+        return imgRemoveButton;
+    }
+
+    public JButton getConvertButton() {
+        return convertButton;
+    }
+
 }

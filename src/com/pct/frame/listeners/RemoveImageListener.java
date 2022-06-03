@@ -25,6 +25,8 @@ public class RemoveImageListener implements ActionListener {
             if(model.getSize() == 0){
                 Main.frame.getImgUpButton().setEnabled(false);
                 Main.frame.getImgDownButton().setEnabled(false);
+                Main.frame.getImgRemoveButton().setEnabled(false);
+                Main.frame.getConvertButton().setEnabled(false);
             }
         }
     }

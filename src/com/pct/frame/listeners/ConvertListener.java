@@ -15,17 +15,19 @@ public class ConvertListener implements ActionListener
 {
     private final JList<String> imageFileList;
     private int expansionDegree = 1;
+    private float distance = 0;
     private boolean selectionMode;
-    public ConvertListener(JList<String> AModel, int AExpansionDegree, boolean ASelectionMode)
+    public ConvertListener(JList<String> AModel, int AExpansionDegree, int ADistance, boolean ASelectionMode)
     {
         this.imageFileList = AModel;
         this.expansionDegree = AExpansionDegree;
+        this.distance = ADistance;
         this.selectionMode =ASelectionMode;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        StringBuilder arguments = new StringBuilder(" " + expansionDegree + "");
+        StringBuilder arguments = new StringBuilder(" " + expansionDegree + " " + distance + "");
         ListModel<String> fileListModel = imageFileList.getModel();
         String path = "." + File.separator + "tool";
         List<String> command = new ArrayList<>();

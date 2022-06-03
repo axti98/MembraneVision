@@ -15,7 +15,7 @@ public abstract class Const {
     public static final float MINIMUM_FRAME_WIDTH = DEFAULT_FRAME_WIDTH * 0.8f;
     public static final float MINIMUM_FRAME_HEIGHT = DEFAULT_FRAME_HEIGHT * 0.5f;
 
-    public static final String FRAME_TITLE = "Parameter Converter Tool";
+    public static final String FRAME_TITLE = "Membrane Vision";
     public static final String ABOUT_TITLE = "About";
     public static final String IMPRINT_TITLE = "Imprint";
 
@@ -80,7 +80,7 @@ public abstract class Const {
     public static final String OS_NAME_PROPERTY = "os.name";
 
     public static final int NO_INDEX_SELECTED = -1;
-
+    public static final int NO_IMAGE_IN_LIST = 0;
     // FILE EXTENSIONS
     public static final String EXT_TIF = "tif";
     public static final String EXT_TIFF = "tiff";
