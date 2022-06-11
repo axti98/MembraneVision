@@ -14,15 +14,15 @@ import java.util.List;
 public class ConvertListener implements ActionListener
 {
     private final JList<String> imageFileList;
-    private int expansionDegree = 1;
-    private float distance = 0;
+    private int expansionDegree;
+    private int voxelSize;
     private boolean selectionMode;
-    public ConvertListener(JList<String> AModel, int AExpansionDegree, int ADistance, boolean ASelectionMode)
+    public ConvertListener(JList<String> AModel, int AExpansionDegree, int AVoxelSize, boolean ASelectionMode)
     {
         this.imageFileList = AModel;
         this.expansionDegree = AExpansionDegree;
-        this.distance = ADistance;
-        this.selectionMode =ASelectionMode;
+        this.voxelSize = AVoxelSize;
+        this.selectionMode = ASelectionMode;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ConvertListener implements ActionListener
             command.add("start");
             command.add(file.getAbsolutePath());
             command.add(Integer.toString(expansionDegree));
-            command.add(Float.toString(distance));
+            command.add(Float.toString(voxelSize));
 
             for(int i = 0; i < fileListModel.getSize(); i++)
             {

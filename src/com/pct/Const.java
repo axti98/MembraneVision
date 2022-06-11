@@ -7,6 +7,8 @@ public abstract class Const {
     public static final String FILE_CHOOSER_TITLE = "Choose a file...";
     public static final int EMPTY_LIST = 0;
     public static final String EMPTY_STR = "";
+    public static final int DEFAULT_EXPANSION_DEGREE = 1;
+    public static final float DEFAULT_DISTANCE = 0.0f;
 
     private Const(){}
 
@@ -30,7 +32,7 @@ public abstract class Const {
 
     // USER INPUT CONSTANTS
     public static final String EXPANSION_DEGREE_LABEL = "Expansion degree:";
-    public static final String DISTANCE_LABEL = "Distance:";
+    public static final String DISTANCE_LABEL = "Voxel size:";
 
     public static final String CONVERSION_MODE_LABEL = "Conversion mode:";
     public static final String LIST_RADIO_TEXT = "List of 2D images";

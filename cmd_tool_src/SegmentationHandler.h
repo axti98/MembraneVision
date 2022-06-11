@@ -14,6 +14,10 @@
 
 #include "Const.h"
 
+#define THRESH_MAX 1
+#define THRESH_VAL 0
+
+
 class SegmentationHandler{
 private:
     int image_count;

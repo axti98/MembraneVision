@@ -33,6 +33,6 @@ public final class ToolTipTexts {
             "for the spherical harmonics. Note that in this expansion, a degree of k means 2k+1 parameters that must be" +
             "saved";
 
-    public static final String distanceTextToolTip = "Here you can enter the distance between the image sections that" +
-            "will be used to calculate the voxel size";
+    public static final String distanceTextToolTip = "In this field you can enter the size of the voxelization " +
+            "in integers.";
 }

@@ -27,7 +27,7 @@ public class PCTFrame extends JFrame {
     private final JPanel buttons = new JPanel();
     private final JPanel radioButtons = new JPanel();
     private final JPanel conversionPane = new JPanel();
-    private final JLabel distanceLabel = new JLabel(Const.DISTANCE_LABEL);
+    private final JLabel voxelSizeLabel = new JLabel(Const.DISTANCE_LABEL);
     private final JLabel expansionDegreeLabel = new JLabel(Const.EXPANSION_DEGREE_LABEL);
     private final JLabel conversionModeLabel = new JLabel(Const.CONVERSION_MODE_LABEL);
     private final JLabel imagePreviewLabel = new JLabel();
@@ -40,7 +40,7 @@ public class PCTFrame extends JFrame {
     private final JButton changeZOrder = new JButton(Const.CHANGE_Z_ORDER_TEXT);
     private final JButton convertButton = new JButton(Const.CONVERT_TEXT);
     private final JTextField expansionDegreeText = new JTextField();
-    private final JTextField distanceText = new JTextField();
+    private final JTextField voxelSizeText = new JTextField();
     private final JRadioButton listRadioButton = new JRadioButton(Const.LIST_RADIO_TEXT);
     private final JRadioButton dimensionalRadioButton = new JRadioButton(Const.DIMENSIONAL_RADIO_TEXT);
     private final ButtonGroup conversionModeGroup = new ButtonGroup();
@@ -105,8 +105,8 @@ public class PCTFrame extends JFrame {
 
         this.expansionDegreePanel.add(expansionDegreeLabel);
         this.expansionDegreePanel.add(expansionDegreeText);
-        this.distancePanel.add(distanceLabel, BorderLayout.PAGE_END);
-        this.distancePanel.add(distanceText);
+        this.distancePanel.add(voxelSizeLabel, BorderLayout.PAGE_END);
+        this.distancePanel.add(voxelSizeText);
 
         this.controlsBox.add(movePanel, BorderLayout.LINE_START);
         this.controlsBox.add(addPanel, BorderLayout.LINE_END);
@@ -164,6 +164,7 @@ public class PCTFrame extends JFrame {
                 (int) (this.getHeight()*Const.PREFERRED_INPUT_HEIGHT_FACTOR)
         ));
 
+        // TODO: Make label use the image resolution and ratio (no cropping, etc.)
         this.imagePreviewLabel.setPreferredSize(this.getImagePreviewPane().getPreferredSize());
         this.imagePreviewLabel.setText("");
 
@@ -228,15 +229,17 @@ public class PCTFrame extends JFrame {
         this.expansionDegreeText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
         this.expansionDegreeText.setToolTipText(ToolTipTexts.expansionDegreeTextToolTip);
         this.expansionDegreeText.setText("1");
-        PlainDocument doc = (PlainDocument) this.expansionDegreeText.getDocument();
-        doc.setDocumentFilter(new IntegerFilter());
+        PlainDocument docExpansionDegree = (PlainDocument) this.expansionDegreeText.getDocument();
+        docExpansionDegree.setDocumentFilter(new IntegerFilter());
 
-        this.distanceLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-        this.distanceLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
+        this.voxelSizeLabel.setHorizontalAlignment(SwingConstants.RIGHT);
+        this.voxelSizeLabel.setPreferredSize(Const.LABEL_DEFAULT_DIMENSION);
 
-        this.distanceText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
-        this.distanceText.setToolTipText(ToolTipTexts.distanceTextToolTip);
-        this.distanceText.setText("0");
+        this.voxelSizeText.setPreferredSize(Const.TEXTFIELD_DEFAULT_DIMENSION);
+        this.voxelSizeText.setToolTipText(ToolTipTexts.distanceTextToolTip);
+        this.voxelSizeText.setText("1");
+        PlainDocument docVoxelSize = (PlainDocument) this.voxelSizeText.getDocument();
+        docVoxelSize.setDocumentFilter(new IntegerFilter());
 
         this.changeZOrder.setToolTipText(ToolTipTexts.changeZOrderButtonToolTip);
 
@@ -250,12 +253,11 @@ public class PCTFrame extends JFrame {
         this.convertButton.addActionListener(new ConvertListener(
                 this.getImageFileList(),
                 Integer.parseInt(this.expansionDegreeText.getText()),
-                Integer.parseInt(this.distanceText.getText()),
+                Integer.parseInt(this.voxelSizeText.getText()),
                 this.listRadioButton.isSelected()
         ));
 
         // CHANGE TO TRUE WHEN 3D WILL BE AVAILABLE
-        this.distanceText.setEnabled(false);
         this.changeZOrder.setEnabled(false);
         this.dimensionalRadioButton.setEnabled(false);
         // ----------------------------------------

@@ -16,4 +16,6 @@
 
 #define DEFAULT_RADIX 10
 
+#define MIN_VOXEL_SIZE 1
+
 #endif //CMD_TOOL_SRC_CONST_H
