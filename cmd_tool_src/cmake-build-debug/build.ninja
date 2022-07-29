@@ -63,6 +63,48 @@ build CMakeFiles/tool.dir/SegmentationHandler.cpp.obj: CXX_COMPILER__tool_Debug 
   OBJECT_DIR = CMakeFiles\tool.dir
   OBJECT_FILE_DIR = CMakeFiles\tool.dir
 
+build CMakeFiles/tool.dir/alglib/optimization.cpp.obj: CXX_COMPILER__tool_Debug C$:/Users/User/IdeaProjects/MembraneVision/cmd_tool_src/alglib/optimization.cpp || cmake_object_order_depends_target_tool
+  DEP_FILE = CMakeFiles\tool.dir\alglib\optimization.cpp.obj.d
+  FLAGS = -g -fopenmp -std=gnu++23
+  INCLUDES = -isystem C:/opencv/build_mingw/install/include
+  OBJECT_DIR = CMakeFiles\tool.dir
+  OBJECT_FILE_DIR = CMakeFiles\tool.dir\alglib
+
+build CMakeFiles/tool.dir/alglib/solvers.cpp.obj: CXX_COMPILER__tool_Debug C$:/Users/User/IdeaProjects/MembraneVision/cmd_tool_src/alglib/solvers.cpp || cmake_object_order_depends_target_tool
+  DEP_FILE = CMakeFiles\tool.dir\alglib\solvers.cpp.obj.d
+  FLAGS = -g -fopenmp -std=gnu++23
+  INCLUDES = -isystem C:/opencv/build_mingw/install/include
+  OBJECT_DIR = CMakeFiles\tool.dir
+  OBJECT_FILE_DIR = CMakeFiles\tool.dir\alglib
+
+build CMakeFiles/tool.dir/alglib/linalg.cpp.obj: CXX_COMPILER__tool_Debug C$:/Users/User/IdeaProjects/MembraneVision/cmd_tool_src/alglib/linalg.cpp || cmake_object_order_depends_target_tool
+  DEP_FILE = CMakeFiles\tool.dir\alglib\linalg.cpp.obj.d
+  FLAGS = -g -fopenmp -std=gnu++23
+  INCLUDES = -isystem C:/opencv/build_mingw/install/include
+  OBJECT_DIR = CMakeFiles\tool.dir
+  OBJECT_FILE_DIR = CMakeFiles\tool.dir\alglib
+
+build CMakeFiles/tool.dir/alglib/ap.cpp.obj: CXX_COMPILER__tool_Debug C$:/Users/User/IdeaProjects/MembraneVision/cmd_tool_src/alglib/ap.cpp || cmake_object_order_depends_target_tool
+  DEP_FILE = CMakeFiles\tool.dir\alglib\ap.cpp.obj.d
+  FLAGS = -g -fopenmp -std=gnu++23
+  INCLUDES = -isystem C:/opencv/build_mingw/install/include
+  OBJECT_DIR = CMakeFiles\tool.dir
+  OBJECT_FILE_DIR = CMakeFiles\tool.dir\alglib
+
+build CMakeFiles/tool.dir/alglib/alglibmisc.cpp.obj: CXX_COMPILER__tool_Debug C$:/Users/User/IdeaProjects/MembraneVision/cmd_tool_src/alglib/alglibmisc.cpp || cmake_object_order_depends_target_tool
+  DEP_FILE = CMakeFiles\tool.dir\alglib\alglibmisc.cpp.obj.d
+  FLAGS = -g -fopenmp -std=gnu++23
+  INCLUDES = -isystem C:/opencv/build_mingw/install/include
+  OBJECT_DIR = CMakeFiles\tool.dir
+  OBJECT_FILE_DIR = CMakeFiles\tool.dir\alglib
+
+build CMakeFiles/tool.dir/alglib/alglibinternal.cpp.obj: CXX_COMPILER__tool_Debug C$:/Users/User/IdeaProjects/MembraneVision/cmd_tool_src/alglib/alglibinternal.cpp || cmake_object_order_depends_target_tool
+  DEP_FILE = CMakeFiles\tool.dir\alglib\alglibinternal.cpp.obj.d
+  FLAGS = -g -fopenmp -std=gnu++23
+  INCLUDES = -isystem C:/opencv/build_mingw/install/include
+  OBJECT_DIR = CMakeFiles\tool.dir
+  OBJECT_FILE_DIR = CMakeFiles\tool.dir\alglib
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target tool
@@ -71,7 +113,7 @@ build CMakeFiles/tool.dir/SegmentationHandler.cpp.obj: CXX_COMPILER__tool_Debug 
 #############################################
 # Link the executable C:\Users\User\IdeaProjects\MembraneVision\out\artifacts\MembraneVision\tool.exe
 
-build C$:/Users/User/IdeaProjects/MembraneVision/out/artifacts/MembraneVision/tool.exe: CXX_EXECUTABLE_LINKER__tool_Debug CMakeFiles/tool.dir/main.cpp.obj CMakeFiles/tool.dir/SegmentationHandler.cpp.obj | C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_highgui455.dll.a C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_videoio455.dll.a C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_imgcodecs455.dll.a C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_imgproc455.dll.a C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_core455.dll.a C$:/Program$ Files/JetBrains/CLion$ 2021.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/libgomp.dll.a C$:/Program$ Files/JetBrains/CLion$ 2021.3.3/bin/mingw/x86_64-w64-mingw32/lib/libmingwthrd.a
+build C$:/Users/User/IdeaProjects/MembraneVision/out/artifacts/MembraneVision/tool.exe: CXX_EXECUTABLE_LINKER__tool_Debug CMakeFiles/tool.dir/main.cpp.obj CMakeFiles/tool.dir/SegmentationHandler.cpp.obj CMakeFiles/tool.dir/alglib/optimization.cpp.obj CMakeFiles/tool.dir/alglib/solvers.cpp.obj CMakeFiles/tool.dir/alglib/linalg.cpp.obj CMakeFiles/tool.dir/alglib/ap.cpp.obj CMakeFiles/tool.dir/alglib/alglibmisc.cpp.obj CMakeFiles/tool.dir/alglib/alglibinternal.cpp.obj | C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_highgui455.dll.a C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_videoio455.dll.a C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_imgcodecs455.dll.a C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_imgproc455.dll.a C$:/opencv/build_mingw/install/x64/mingw/lib/libopencv_core455.dll.a C$:/Program$ Files/JetBrains/CLion$ 2021.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/libgomp.dll.a C$:/Program$ Files/JetBrains/CLion$ 2021.3.3/bin/mingw/x86_64-w64-mingw32/lib/libmingwthrd.a
   FLAGS = -g
   LINK_LIBRARIES = C:/opencv/build_mingw/install/x64/mingw/lib/libopencv_highgui455.dll.a  C:/opencv/build_mingw/install/x64/mingw/lib/libopencv_videoio455.dll.a  C:/opencv/build_mingw/install/x64/mingw/lib/libopencv_imgcodecs455.dll.a  C:/opencv/build_mingw/install/x64/mingw/lib/libopencv_imgproc455.dll.a  C:/opencv/build_mingw/install/x64/mingw/lib/libopencv_core455.dll.a  "C:/Program Files/JetBrains/CLion 2021.3.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/libgomp.dll.a"  "C:/Program Files/JetBrains/CLion 2021.3.3/bin/mingw/x86_64-w64-mingw32/lib/libmingwthrd.a"  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\tool.dir

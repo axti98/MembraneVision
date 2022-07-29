@@ -16,6 +16,12 @@
 
 #define DEFAULT_RADIX 10
 
-#define MIN_VOXEL_SIZE 1
+#define NORTH_POLE_VERTEX 0
+
+#define DIRECT_NEIGHBOUR_STEP 2
+
+#define MAX_NEIGHBOURS 8
+
+#define EMPTY_STR ""
 
 #endif //CMD_TOOL_SRC_CONST_H

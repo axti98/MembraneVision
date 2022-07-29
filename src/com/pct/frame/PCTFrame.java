@@ -165,8 +165,6 @@ public class PCTFrame extends JFrame {
         ));
 
         // TODO: Make label use the image resolution and ratio (no cropping, etc.)
-        this.imagePreviewLabel.setPreferredSize(this.getImagePreviewPane().getPreferredSize());
-        this.imagePreviewLabel.setText("");
 
         this.getUserControlPane().setLayout(new BorderLayout());
 

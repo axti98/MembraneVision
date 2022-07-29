@@ -16,7 +16,17 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 # add libs you need
 set(OpenCV_LIBS opencv_core opencv_imgproc opencv_highgui opencv_imgcodecs)
 
-add_executable(tool main.cpp Const.h SegmentationHandler.cpp SegmentationHandler.h)
+add_executable(tool main.cpp
+        Const.h
+        SegmentationHandler.cpp SegmentationHandler.h
+        alglib/optimization.cpp alglib/optimization.h
+        alglib/solvers.cpp alglib/solvers.h
+        alglib/stdafx.h
+        alglib/linalg.cpp alglib/linalg.h
+        alglib/ap.cpp alglib/ap.h
+        alglib/alglibmisc.cpp alglib/alglibmisc.h
+        alglib/alglibinternal.cpp alglib/alglibinternal.h
+        )
 
 # linking
 target_link_libraries(tool ${OpenCV_LIBS})
